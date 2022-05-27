@@ -1,11 +1,12 @@
 package com.musicstore.demo.service;
 
 import com.musicstore.demo.entity.Instrument;
-import com.musicstore.demo.entity.InstrumentType;
 import com.musicstore.demo.exceptionhandler.InstrumentNotFoundException;
 import com.musicstore.demo.repository.InstrumentRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
@@ -55,15 +56,11 @@ public class InstrumentService {
         return instrument;
     }
 
-    public Instrument editInstrumentById(Long id, Instrument newInstrument){
+    public Instrument editPriceById(Long id, int newPrice){
         Instrument instrument = getInstrumentById(id);
-        instrument.setInstrumentType(newInstrument.getInstrumentType());
-        instrument.setBrand(newInstrument.getBrand());
-        instrument.setModel(newInstrument.getModel());
-        instrument.setYearOfProduction(newInstrument.getYearOfProduction());
-        instrument.setPrice(newInstrument.getPrice());
-        instrument.setAvailable(newInstrument.isAvailable());
-        return saveInstrument(instrument);
+        instrument.setPrice(newPrice);
+        saveInstrument(instrument);
+        return instrument;
     }
 
     public Instrument deleteInstrumentById(Long id, Instrument instrument){

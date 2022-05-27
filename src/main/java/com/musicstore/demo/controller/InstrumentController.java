@@ -29,12 +29,12 @@ public class InstrumentController {
 
     @PostMapping("addinstrument")
     public ResponseEntity<Instrument> addInstrument(@RequestBody Instrument instrument){
-        return ResponseEntity.ok(this.instrumentService.addInstrument(instrument));
+        return ResponseEntity.ok(instrumentService.saveInstrument(instrument));
     }
 
-    @PostMapping("edit/{id}")
-    public ResponseEntity<Instrument> editInstrumentById(@PathVariable Long id, @RequestBody Instrument instrument){
-        return ResponseEntity.ok(this.instrumentService.editInstrumentById(id, instrument));
+    @PostMapping("editprice/{id}/{newPrice}")
+    public ResponseEntity<Instrument> editPriceById(@PathVariable Long id, @PathVariable int newPrice){
+        return ResponseEntity.ok(instrumentService.editPriceById(id, newPrice));
     }
 
     @PostMapping("setavailable/{id}")
