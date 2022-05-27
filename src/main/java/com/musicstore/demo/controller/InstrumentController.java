@@ -48,8 +48,8 @@ public class InstrumentController {
     }
 
     @DeleteMapping("deleteinstrument/{id}")
-    public ResponseEntity<Instrument> deleteInstrumentById(Long id, @RequestBody Instrument instrument){
-        return ResponseEntity.ok(this.instrumentService.deleteInstrumentById(id, instrument));
+    public ResponseEntity<Void> deleteInstrumentById(Long id){
+        return ResponseEntity.ok().build();
     }
 
 }

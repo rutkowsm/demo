@@ -4,9 +4,7 @@ import com.musicstore.demo.entity.Instrument;
 import com.musicstore.demo.exceptionhandler.InstrumentNotFoundException;
 import com.musicstore.demo.repository.InstrumentRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
@@ -63,8 +61,7 @@ public class InstrumentService {
         return instrument;
     }
 
-    public Instrument deleteInstrumentById(Long id, Instrument instrument){
+    public void deleteInstrumentById(Long id){
         instrumentRepository.deleteById(id);
-        return instrument;
     }
 }
