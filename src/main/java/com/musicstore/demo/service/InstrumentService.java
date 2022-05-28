@@ -10,14 +10,10 @@ import java.util.List;
 @Service
 public class InstrumentService {
 
-    private List<Instrument> instruments;
-
     private final InstrumentRepository instrumentRepository;
 
 
-//    Tutaj może się okazać, że trzeba skrócić do samego repo
-    public InstrumentService(List<Instrument> instruments, InstrumentRepository instrumentRepository) {
-        this.instruments = instruments;
+    public InstrumentService(InstrumentRepository instrumentRepository) {
         this.instrumentRepository = instrumentRepository;
     }
 
@@ -30,14 +26,10 @@ public class InstrumentService {
                 .orElseThrow(InstrumentNotFoundException::new);
     }
 
-    public Instrument addInstrument(Instrument instrument){
-        this.instruments.add(instrument);
-        return instrument;
-    }
 
     public Instrument saveInstrument(Instrument instrument){
-        instrumentRepository.save(instrument);
-        return instrument;
+        return instrumentRepository.save(instrument);
+
     }
 
     public Instrument makeInstrumentAvailableById(Long id){
