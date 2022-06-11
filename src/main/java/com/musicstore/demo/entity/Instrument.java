@@ -1,11 +1,16 @@
 package com.musicstore.demo.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
+@ApiModel(value = "Instrument", description = "Instrument in the offer")
 @Entity
 public class Instrument {
 
     @Id
+    @ApiModelProperty(value = "Unique identifier if the given instrument", readOnly = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
@@ -15,6 +20,7 @@ public class Instrument {
     private String model;
     private int yearOfProduction;
     private int price;
+    @ApiModelProperty(value = "Information whether an instrument is available")
     private boolean isAvailable;
 
     public Instrument(){
